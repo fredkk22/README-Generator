@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const inquirer = require("inquirer");
-const genMarkdown = require('./utils/generateMarkdown')
+const genMarkdown = require('./utils/generateMarkdown');
+const fs = require("fs");
 // TODO: Create an array of questions for user input
 const questions = [
     'What will be the title of your README?',
@@ -10,8 +11,11 @@ const questions = [
     'Please provide contribution guidelines:',
     'How can the user run the tests for your application?',
     'Please enter your GitHub username:',
-    'Please enter your email for future questions:'
+    'Please enter your email for future questions:',
+    'What are the licenses your application uses?'
 ];
+
+const licenseChoices = ['GPL v3','AGPL v3','LGPL v3','MPL 2.0','Apache 2.0','MIT','Boost 1.0','Unlicense']
 
 inquirer
     .prompt([
@@ -55,12 +59,19 @@ inquirer
             message: questions[7],
             name: 'email'
         },
+        {
+            type: 'list',
+            message: questions[8],
+            choices: licenseChoices,
+            loop: false,
+            name: 'license'
+        }
     ])
 
     // TODO: Create a function to write README file
     .then((response) => {
-        fs.writeFile('README.md', JSON.stringify(response), (error) => {
-            error ? console.error(error) : console.log('Woohoo! Please check for your generate README.md file');
+        fs.writeFile('README.md', genMarkdown(response), (error) => {
+            error ? console.error(error) : console.log('Woohoo! Please check your folder for your automatically generated README.md file');
         })
     })
 // TODO: Create a function to initialize app
