@@ -87,8 +87,8 @@ inquirer
     ])
 
     // TODO: Create a function to write README file
-    .then((response) => {
-        fs.writeFile('README.md', genMarkdown(response), (error) => {
+    .then((data) => {
+        fs.writeFile('README.md', genMarkdown(data), (error) => {
             error ? console.error(error) : console.log('Woohoo! Please check your folder for your automatically generated README.md file');
         })
     })
