@@ -5,7 +5,10 @@ const fs = require("fs");
 // TODO: Create an array of questions for user input
 const questions = [
     'What will be the title of your README?',
-    'What will be the description of your README?',
+    'What was your motivation for this application?',
+    'Why did you build this application?',
+    'What problem does your application solve?',
+    'What did you learn throughout the process?',
     'How can the user install your application?',
     'Please enter your usage information:',
     'Please provide contribution guidelines:',
@@ -15,7 +18,7 @@ const questions = [
     'What are the licenses your application uses?'
 ];
 
-const licenseChoices = ['GPL v3','AGPL v3','LGPL v3','MPL 2.0','Apache 2.0','MIT','Boost 1.0','Unlicense']
+const licenseChoices = ['GPL v3.0','AGPL v3.0','LGPL v3.0','MPL 2.0','Apache 2.0','MIT','BSL 1.0','Unlicense']
 
 inquirer
     .prompt([
@@ -27,41 +30,56 @@ inquirer
         {
             type: 'input',
             message: questions[1],
-            name: 'desc'
+            name: 'motivation'
         },
         {
             type: 'input',
             message: questions[2],
-            name: 'install'
+            name: 'build'
         },
         {
             type: 'input',
             message: questions[3],
-            name: 'usage'
+            name: 'solution'
         },
         {
             type: 'input',
             message: questions[4],
-            name: 'contribute'
+            name: 'learn'
         },
         {
             type: 'input',
             message: questions[5],
-            name: 'test'
+            name: 'install'
         },
         {
             type: 'input',
             message: questions[6],
-            name: 'gitusername'
+            name: 'usage'
         },
         {
             type: 'input',
             message: questions[7],
+            name: 'contribute'
+        },
+        {
+            type: 'input',
+            message: questions[8],
+            name: 'test'
+        },
+        {
+            type: 'input',
+            message: questions[9],
+            name: 'gitusername'
+        },
+        {
+            type: 'input',
+            message: questions[10],
             name: 'email'
         },
         {
             type: 'list',
-            message: questions[8],
+            message: questions[11],
             choices: licenseChoices,
             loop: false,
             name: 'license'
@@ -74,8 +92,3 @@ inquirer
             error ? console.error(error) : console.log('Woohoo! Please check your folder for your automatically generated README.md file');
         })
     })
-// TODO: Create a function to initialize app
-function init() { }
-
-// Function call to initialize app
-init();
