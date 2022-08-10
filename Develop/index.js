@@ -6,7 +6,11 @@ const questions = [
     'What will be the title of your README?',
     'What will be the description of your README?',
     'How can the user install your application?',
-    'Please enter your usage information'
+    'Please enter your usage information:',
+    'Please provide contribution guidelines:',
+    'How can the user run the tests for your application?',
+    'Please enter your GitHub username:',
+    'Please enter your email for future questions:'
 ];
 
 inquirer
@@ -29,7 +33,27 @@ inquirer
         {
             type: 'input',
             message: questions[3],
-            name: 'install'
+            name: 'usage'
+        },
+        {
+            type: 'input',
+            message: questions[4],
+            name: 'contribute'
+        },
+        {
+            type: 'input',
+            message: questions[5],
+            name: 'test'
+        },
+        {
+            type: 'input',
+            message: questions[6],
+            name: 'gitusername'
+        },
+        {
+            type: 'input',
+            message: questions[7],
+            name: 'email'
         },
     ])
 
